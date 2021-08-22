@@ -1,5 +1,10 @@
 Command prefix: `>`
 
+### Features
+- API integration (covid-19 data, random facts)
+- Reaction roles
+- Custom help command
+
 | Command | Brief |
 |--------------------|------------------------------------------|
 | load/unload/reload | Load/unload/reload extension             |
@@ -8,7 +13,8 @@ Command prefix: `>`
 | roll               | Generate a random number                 |
 | covid              | Get Covid-19 data by country             |
 | ban/kick/unban     | Moderate server                          |
->Type >help for more info
+| serverinfo         | Display some server stats                |
+| help               | List all commands by category            |
 
 ---
 
@@ -35,13 +41,19 @@ bot.run(os.getenv('BOT_TOKEN')) # run.py
 
 Tweak server role and message ids
 ```python
-    def __init__(self, bot):
-        self.bot = bot
-        self.role_message_ids = [856250741694136341, 856447452533751818]
-        self.emoji_to_role = {
-            '🟢': 856251410353618955,
-            '🟡': 856251467715313704,
-            '🎉': 856447097892110357
-        }
+# /src/cogs/moderation.py
+
+self.role_message_ids = [856250741694136341, 856447452533751818]
+self.emoji_to_role = {
+    '🟢': 856251410353618955,
+    '🟡': 856251467715313704,
+    '🎉': 856447097892110357
+}
 ```
->/src/cogs/moderation.py
+
+Allow help commands in only certain channels(based on channel id)
+```python
+# /src/cogs/help.py
+
+self.help_channels = [878903467488464906, 779445592560500819]
+```
