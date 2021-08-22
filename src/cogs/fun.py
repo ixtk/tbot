@@ -19,11 +19,16 @@ class Fun(commands.Cog):
 
         await ctx.send(f'{json_data["text"]} {choice(emojis)}')
 
-    @commands.command(brief='Get a random number', help='Get a random number up to <n>')
+    @commands.command(brief='Get a random number', help='Get a random number up to <n>', usage='[n=100]')
     async def roll(self, ctx, n=100):
         await ctx.send(f'{ctx.message.author.name} rolled {choice(range(1, n + 1)):,}! :star2:')
 
-    @commands.command(name='8ball', brief='Get a random answer', help='Get a random yes/no type of answer to your question')
+    @commands.command(
+        name='8ball',
+        brief='Get a random answer',
+        help='Get a random yes/no type of answer to your question',
+        usage='<question>'
+    )
     async def eight_ball(self, ctx, *, question):
         answers = [
             'As I see it, yes.',

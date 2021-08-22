@@ -56,7 +56,7 @@ class Moderation(commands.Cog):
 
     @commands.has_guild_permissions(ban_members=True)
     @commands.bot_has_guild_permissions(ban_members=True)
-    @commands.command(brief='Ban the user')
+    @commands.command(brief='Ban the user', usage='<user>')
     async def ban(self, ctx, member: discord.User, *, reason=None):
         if reason is None:
             reason = 'being a jerk'
@@ -80,7 +80,7 @@ class Moderation(commands.Cog):
 
     @commands.has_guild_permissions(kick_members=True)
     @commands.bot_has_guild_permissions(kick_members=True)
-    @commands.command(brief='Kick the user')
+    @commands.command(brief='Kick the user', usage='<user>')
     async def kick(self, ctx, member: discord.User, *, reason=None):
         if reason is None:
             reason = 'being a jerk'
